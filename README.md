@@ -1,36 +1,152 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SUIR
 
-## Getting Started
+Сайт образовательного/научного направления (ITMO). Собран на **Next.js** с **React 19**, **TypeScript** и **SCSS**. Содержит главную страницу, разделы «Магистратура» и «Наука», виджеты: баннер, блок с цифрами, образование, достижения, новости, партнёры, зимняя школа, хедер и футер.
 
-First, run the development server:
+---
+
+## Содержание
+
+- [Требования](#требования)
+- [Установка](#установка)
+- [Скрипты](#скрипты)
+- [Структура проекта](#структура-проекта)
+- [Страницы и маршруты](#страницы-и-маршруты)
+- [Стек и зависимости](#стек-и-зависимости)
+- [Стили и шрифты](#стили-и-шрифты)
+- [Деплой (Vercel)](#деплой-vercel)
+
+---
+
+## Требования
+
+- **Node.js** 18+ (рекомендуется 20+)
+- **npm** 9+
+
+---
+
+## Установка
+
+Клонирование и установка зависимостей:
+
+```bash
+git clone https://github.com/KoroLev2512/suir.git
+cd suir
+npm install
+```
+
+Запуск в режиме разработки:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Откройте [http://localhost:3000](http://localhost:3000) в браузере.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Скрипты
 
-## Learn More
+| Команда | Описание |
+|--------|----------|
+| `npm run dev` | Запуск dev-сервера (Next.js) на порту 3000 |
+| `npm run build` | Сборка для production |
+| `npm run start` | Запуск production-сервера после `npm run build` |
+| `npm run lint` | Проверка кода ESLint (Next.js) |
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Структура проекта
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
+suir/
+├── public/                 # Статика
+│   ├── fonts/              # SF Pro Display (OTF)
+│   ├── icons/              # SVG: логотипы, label
+│   └── images/             # Баннеры, робот, ITMO, достижения
+├── src/
+│   ├── pages/              # Страницы (Next.js Pages Router)
+│   │   ├── _app.tsx        # Обёртка приложения
+│   │   ├── index.tsx       # Главная
+│   │   ├── master/         # Магистратура
+│   │   └── science/        # Наука
+│   ├── shared/             # Общие компоненты и утилиты
+│   │   ├── Text/           # Компонент текста
+│   │   └── lib/
+│   │       ├── colors.ts   # Цвета
+│   │       ├── icons/      # SVG-иконки (React)
+│   │       └── language/   # Языковой контекст/хелперы
+│   └── widgets/            # Виджеты страниц
+│       ├── header/         # Шапка, навигация
+│       ├── banner/         # Главный баннер
+│       ├── info/           # Блок с цифрами (места, программы, специальности)
+│       ├── education/      # Образование
+│       ├── achievements/   # Достижения
+│       ├── news/           # Новости
+│       ├── partners/       # Партнёры
+│       ├── winter-school/  # Зимняя школа
+│       ├── footer/         # Подвал
+│       ├── master/         # UI и данные для страницы «Магистратура»
+│       └── science/        # UI и данные для страницы «Наука»
+├── styles/                 # Глобальные SCSS
+│   ├── globals.scss
+│   ├── variables.scss
+│   ├── mixins.scss
+│   └── colors.scss
+├── next.config.mjs
+├── tsconfig.json            # Алиас @/* → ./src/*
+└── package.json
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Страницы и маршруты
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+| Путь | Описание |
+|------|----------|
+| `/` | Главная: баннер, инфо-блок, образование, достижения, новости, партнёры, зимняя школа |
+| `/master` | Магистратура: hero, этапы, преподаватели |
+| `/science` | Наука: hero, лаборатории, проекты |
+
+Роутинг — **Next.js Pages Router** (`src/pages/`).
+
+---
+
+## Стек и зависимости
+
+- **Next.js** 16
+- **React** 19, **React DOM** 19
+- **TypeScript** 5.7
+- **Sass** (SCSS), в т.ч. CSS Modules (`*.module.scss`)
+- **classnames** — условные классы
+- **ESLint** + **eslint-config-next**
+
+В `tsconfig.json` настроен алиас: `@/*` → `./src/*` (импорты вида `@/widgets/header`, `@/shared/Text`).
+
+---
+
+## Стили и шрифты
+
+- Глобальные стили и переменные: папка **styles/** (подключение через `next.config.mjs` → `sassOptions.includePaths`).
+- Компонентные стили: **CSS Modules** (`.module.scss`) рядом с компонентами.
+- Шрифты **SF Pro Display** (Regular, Medium, Bold и др.) лежат в `public/fonts/` и подключаются в проекте по необходимости.
+
+---
+
+## Деплой (Vercel)
+
+1. Подключите репозиторий к [Vercel](https://vercel.com).
+2. Оставьте команды по умолчанию: **Build** — `npm run build`, **Output** — Next.js.
+3. Деплой по пушам в ветку `main`.
+
+Для локальной проверки production-сборки:
+
+```bash
+npm run build
+npm run start
+```
+
+---
+
+## Лицензия
+
+Проект приватный. Использование — по согласованию с правообладателями.
