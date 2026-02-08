@@ -1,0 +1,167 @@
+@use "../../../styles/mixins" as *;
+
+.footer {
+  background: #65538a;
+  width: 100%;
+  padding: 64px 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 64px;
+  gap: 24px;
+}
+
+.university {
+  display: flex;
+  flex-direction: column;
+  width: 533px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.logoImage {
+  height: 77px;
+  width: 260px;
+  cursor: pointer;
+}
+
+.logoText {
+  @include paragraph-3;
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #fbfbfb;
+  margin: 0;
+}
+
+.spacer {
+  height: 32px;
+}
+
+.spacerSmall {
+  height: 4px;
+}
+
+.spacerLarge {
+  height: 40px;
+}
+
+.spacerHorizontal {
+  width: 24px;
+}
+
+.copyright {
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 14px;
+  color: #fbfbfb;
+  margin: 0;
+}
+
+.rules {
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 14px;
+  color: #fbfbfb;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.bold {
+  margin-left: 2px;
+  font-weight: 500;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  width: 310px;
+  padding-top: 12px;
+}
+
+.item {
+  @include paragraph-2;
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #fbfbfb;
+  margin: 0;
+  height: 24px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 12px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  width: 437px;
+}
+
+.contactTitle {
+  @include paragraph-2;
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 24px;
+  color: #fbfbfb;
+  margin: 0;
+}
+
+.contactText {
+  @include paragraph-2;
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #fbfbfb;
+  margin: 0;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}

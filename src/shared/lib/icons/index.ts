@@ -1,0 +1,12 @@
+export { Arrival } from "./Arrival";
+export { Diakont } from "./Diakont";
+export { Electropribor } from "./Electropribor";
+export { Fenix } from "./Fenix";
+export { QSIcon } from "./QSIcon";
+export { Sber } from "./Sber";
+export { Vk } from "./Vk";
+export { Tg } from "./Tg";
+export { Youtube } from "./Youtube";
+export { ItmoLogo } from "./ItmoLogo";
+export type { IconProps } from "./types";
+export { getSvgOptions } from "./iconHelper";

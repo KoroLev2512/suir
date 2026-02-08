@@ -1,0 +1,228 @@
+@use "../../../styles/mixins" as *;
+
+.bkg {
+  position: relative;
+  background: #e2daf4;
+  min-height: 932px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-top: 128px;
+}
+
+.textGroup {
+  position: absolute;
+  left: 67px;
+  top: 216px;
+  display: flex;
+  flex-direction: column;
+  width: 469px;
+  z-index: 2;
+}
+
+.title {
+  @include heading-1;
+  font-family: "Helvetica", sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 64px;
+  color: #2c2933;
+  margin: 0;
+}
+
+.spacer {
+  height: 32px;
+}
+
+.description {
+  @include paragraph-1;
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 28px;
+  color: #4b4557;
+  margin: 0;
+  width: 433px;
+}
+
+.cardGroup {
+  position: absolute;
+  left: 619px;
+  top: 128px;
+  width: 757px;
+  height: 676px;
+  z-index: 2;
+}
+
+.card {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: transparent;
+}
+
+.cardSmall {
+  left: 0;
+  top: 0;
+  width: 310px;
+}
+
+.cardMedium {
+  left: 336px;
+  width: 421px;
+}
+
+.cardImage {
+  position: relative;
+  width: 100%;
+  border-bottom: 8px solid #8a62d8;
+  overflow: hidden;
+}
+
+.cardSmall .cardImage {
+  height: 140px;
+}
+
+.cardMedium .cardImage {
+  height: 180px;
+}
+
+.imageWrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cardSmall .image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardMedium .image {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.cardMedium:first-of-type .image {
+  top: -75.63%;
+  height: 277.93%;
+}
+
+.cardMedium:last-of-type .image {
+  top: -92.53%;
+  height: 311.73%;
+}
+
+.spacerCard {
+  height: 16px;
+  width: 100%;
+}
+
+.cardText {
+  @include paragraph-1;
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 28px;
+  color: #4b4557;
+  margin: 0;
+  width: 100%;
+}
+
+.cardTextMulti {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.arrow {
+  width: 41px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.decorativeVector {
+  position: absolute;
+  inset: 9.86% 57.64% 53.06% 18.75%;
+  z-index: 1;
+  opacity: 0.3;
+  mix-blend-mode: darken;
+  background: url('/images/achivements.svg') no-repeat center;
+  background-size: contain;
+}
+
+@media (max-width: 1440px) {
+  .bkg {
+    max-width: 100%;
+  }
+
+  .textGroup {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    padding: 0 64px;
+    margin-bottom: 40px;
+  }
+
+  .cardGroup {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    height: auto;
+    padding: 0 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .card {
+    position: relative;
+    left: auto;
+    top: auto !important;
+  }
+
+  .cardSmall,
+  .cardMedium {
+    width: 100%;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bkg {
+    padding-top: 64px;
+    min-height: auto;
+  }
+
+  .textGroup {
+    padding: 0 20px;
+    margin-bottom: 32px;
+  }
+
+  .title {
+    font-size: 48px;
+    line-height: 52px;
+  }
+
+  .cardGroup {
+    padding: 0 20px;
+  }
+
+  .cardText {
+    font-size: 16px;
+    line-height: 24px;
+  }  .description {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}

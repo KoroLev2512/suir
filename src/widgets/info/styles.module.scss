@@ -1,0 +1,51 @@
+@use "../../../styles/mixins" as *;
+
+.info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-start;
+  max-width: 1440px;
+  width: 100%;
+  margin: 128px auto;
+  padding: 0 20px;
+  gap: 24px;
+}
+
+.numbers {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 310px;
+}
+
+.spacer {
+  height: 4px;
+}
+
+.text {
+  @include paragraph-1;
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+  color: #19181b;
+  margin: 0;
+}
+
+.areas {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 421px;
+}
+
+.areaText {
+  @include paragraph-1;
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 28px;
+  color: #19181b;
+  margin: 0;
+}

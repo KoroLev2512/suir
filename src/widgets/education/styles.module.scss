@@ -1,0 +1,173 @@
+@use "../../../styles/mixins" as *;
+
+.education {
+  position: relative;
+  background: #f0f0f0;
+  min-height: 932px;
+  padding: 128px 0;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.textGroup {
+  position: absolute;
+  left: 64px;
+  top: 216px;
+  display: flex;
+  flex-direction: column;
+  width: 469px;
+  z-index: 2;
+}
+
+.title {
+  @include heading-1;
+  font-family: "Helvetica", sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 64px;
+  color: #2c2933;
+  margin: 0;
+}
+
+.spacer {
+  height: 32px;
+}
+
+.description {
+  @include paragraph-1;
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 28px;
+  color: #4b4557;
+  margin: 0;
+  width: 433px;
+}
+
+.cardsContainer {
+  position: absolute;
+  left: 64px;
+  top: 432px;
+  display: flex;
+  gap: 24px;
+  z-index: 2;
+}
+
+.card {
+  background: #fbfbfb;
+  border-bottom: 8px solid #8a62d8;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 24px 64px;
+  width: 373px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.cardTitle {
+  @include heading-4;
+  font-family: "Helvetica", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #2c2933;
+  margin: 0;
+  flex: 1;
+}
+
+.number {
+  height: 44px;
+  width: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Helvetica", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #2c2933;
+  background: #fbfbfb;
+}
+
+.spacerSmall {
+  height: 12px;
+}
+
+.spacerMedium {
+  height: 16px;
+}
+
+.count {
+  @include paragraph-2;
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #4b4557;
+  margin: 0;
+}
+
+.cardDescription {
+  @include paragraph-2;
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 24px;
+  color: #2c2933;
+  margin: 0;
+  width: 370px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 24px;
+  width: 100%;
+}
+
+.places {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.placesCount {
+  @include paragraph-2;
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  color: #2c2933;
+}
+
+.placesDetail {
+  @include paragraph-2;
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 24px;
+  color: #2c2933;
+}
+
+.arrow {
+  width: 41px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.decorativeVector {
+  position: absolute;
+  inset: 11.85% 59.02% 58.68% 29.4%;
+  z-index: 1;
+  opacity: 0.3;
+  background: url('/images/achivements.svg') no-repeat center;
+  background-size: contain;
+}

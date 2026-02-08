@@ -1,0 +1,109 @@
+@use "../../../../styles/mixins" as *;
+
+.hero {
+    padding: 80px 0;
+    background: #E2E0F5; // Light purple background
+    position: relative;
+    overflow: hidden;
+    min-height: 500px;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+}
+
+.label {
+    display: inline-block;
+    background: #987CE8;
+    color: #fff;
+    font-family: "SF Pro Display", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+}
+
+.title {
+    font-family: "SF Pro Display", sans-serif;
+    font-weight: 800;
+    font-size: 64px;
+    line-height: 1;
+    color: #383838;
+    margin: 0 0 24px;
+}
+
+.subtitle {
+    font-family: "SF Pro Display", sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #6A6A6A;
+    max-width: 500px;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 40px;
+    background: #FFFFFF;
+    padding: 32px;
+    border-radius: 4px; // Slight rounding if needed, design looks sharp
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    max-width: 500px;
+}
+
+.statText {
+    font-family: "SF Pro Display", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #383838;
+}
+
+.highlight {
+    color: #987CE8;
+    font-weight: 700;
+}
+
+.starburst {
+    position: absolute;
+    top: 50%;
+    /* Center relative to container or section */
+    left: 40%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        padding: 0 32px;
+    }
+
+    .stats {
+        width: 100%;
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .title {
+        font-size: 40px;
+    }
+
+    .container {
+        padding: 0 20px;
+    }
+}

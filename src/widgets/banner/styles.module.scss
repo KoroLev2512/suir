@@ -1,0 +1,111 @@
+@use "../../../styles/mixins" as *;
+
+.bkg {
+  position: relative;
+  height: 696px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  margin-top: 0;
+  overflow: hidden;
+}
+
+.backgroundGradient {
+  position: absolute;
+  left: 40px;
+  top: 96px;
+  height: 600px;
+  width: calc(100% - 80px);
+  background: linear-gradient(230.774deg, #9378C8 14.44%, #8A62D8 55.05%);
+  z-index: 1;
+}
+
+.robotImage {
+  position: absolute;
+  left: 288px;
+  bottom: 0;
+  height: 696px;
+  width: calc(100% - 288px);
+  background-image: url('/images/robot.png');
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 2;
+}
+
+.itmoLogo {
+  position: absolute;
+  left: 5.5%;
+  top: 42.24%;
+  z-index: 1;
+  width: auto;
+  height: auto;
+
+  img {
+    height: auto;
+    width: auto;
+    max-width: none;
+  }
+}
+
+.qsContainer {
+  position: absolute;
+  left: 64px;
+  top: 152px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  z-index: 3;
+}
+
+.qsText {
+  color: #FFF;
+  font-family: "SF Pro Display", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.titleContainer {
+  position: absolute;
+  left: 64px;
+  top: 392px;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+}
+
+.title {
+  @include heading-1;
+  font-family: "Helvetica", sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 64px;
+  color: #FFF;
+  margin: 0;
+}
+
+@media (max-width: 1440px) {
+  .robotImage {
+    left: 20%;
+    width: 80%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .robotImage {
+    left: 15%;
+    width: 85%;
+  }
+}
+
+@media (max-width: 768px) {
+  .robotImage {
+    left: 10%;
+    width: 90%;
+  }
+}
