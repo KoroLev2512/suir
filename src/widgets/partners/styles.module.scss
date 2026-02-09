@@ -3,11 +3,15 @@
   justify-content: flex-end;
   align-items: center;
   flex-direction: row;
-  height: 85px;
+  min-height: 85px;
+  height: auto;
   width: 100%;
-  max-width: 1440px;
-  gap: 20px;
+  max-width: 1400px;
+  gap: clamp(12px, 1.4vw, 20px);
   margin: 0 auto;
+  padding: 24px clamp(16px, 4.4vw, 64px);
+  box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 .wrapper > :last-child {
@@ -23,10 +27,29 @@
 .qsText {
   color: #FFF;
   font-family: "SF Pro Display", sans-serif;
-  font-size: 16px;
+  font-size: clamp(14px, 1.1vw, 16px);
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
   margin: 0 12px 0 0;
   white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 20px 24px;
+    min-height: 70px;
+    justify-content: center;
+  }
+
+  .qsText {
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 16px;
+  }
 }

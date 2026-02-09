@@ -1,22 +1,26 @@
 @use "../../../styles/mixins" as *;
 
 .bkg {
-  position: relative;
-  background: #e2daf4;
-  min-height: 932px;
   width: 100%;
+  background: #e2daf4;
+}
+
+.bkgInner {
+  position: relative;
+  min-height: 932px;
   max-width: 1440px;
   margin: 0 auto;
-  padding-top: 128px;
+  padding: clamp(48px, 8.9vw, 128px) clamp(16px, 4.4vw, 64px) 80px;
+  box-sizing: border-box;
 }
 
 .textGroup {
   position: absolute;
-  left: 67px;
-  top: 216px;
+  left: clamp(16px, 4.7vw, 67px);
+  top: clamp(80px, 15vw, 216px);
   display: flex;
   flex-direction: column;
-  width: 469px;
+  width: min(469px, 100%);
   z-index: 2;
 }
 
@@ -24,8 +28,8 @@
   @include heading-1;
   font-family: "Helvetica", sans-serif;
   font-weight: 700;
-  font-size: 64px;
-  line-height: 64px;
+  font-size: clamp(32px, 4.4vw, 64px);
+  line-height: 1.1;
   color: #2c2933;
   margin: 0;
 }
@@ -160,7 +164,7 @@
 }
 
 @media (max-width: 1440px) {
-  .bkg {
+  .bkgInner {
     max-width: 100%;
   }
 
@@ -199,7 +203,7 @@
 }
 
 @media (max-width: 768px) {
-  .bkg {
+  .bkgInner {
     padding-top: 64px;
     min-height: auto;
   }
@@ -221,8 +225,30 @@
   .cardText {
     font-size: 16px;
     line-height: 24px;
-  }  .description {
+  }
+
+  .description {
     font-size: 18px;
     line-height: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bkgInner {
+    padding: 40px 16px 56px;
+  }
+
+  .textGroup {
+    padding: 0 16px;
+    margin-bottom: 24px;
+  }
+
+  .cardGroup {
+    padding: 0 16px;
+  }
+
+  .title {
+    font-size: 26px;
+    line-height: 1.2;
   }
 }

@@ -18,10 +18,10 @@ const HomePage = () => {
             <main className={styles.main}>
                 <Banner />
                 <Info />
+                <Partners />
                 <Education />
                 <Achievements />
                 <News />
-                <Partners />
                 <WinterSchool />
             </main>
             <Footer />

@@ -6,6 +6,7 @@ import styles from './styles.module.scss';
 export const WinterSchool = () => {
     return (
         <div className={styles.winterSchool}>
+            <div className={styles.winterSchoolInner}>
             <div className={styles.decorativeBackground}>
                 {/* Will add decorative pixel elements in CSS */}
             </div>
@@ -52,6 +53,7 @@ export const WinterSchool = () => {
                         </a>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     );

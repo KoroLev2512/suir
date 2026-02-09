@@ -2,13 +2,14 @@
 
 .header {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   position: relative;
   margin: 0 auto;
   height: 50px;
   flex-shrink: 0;
-  padding: 15px 0;
+  padding: 16px 10px 16px 0;
   width: 100%;
   background: rgba(240, 240, 240, 0.8);
 }
@@ -18,39 +19,65 @@
   max-width: 1440px;
   width: 100%;
   justify-content: space-between;
+  padding: 0 clamp(16px, 4vw, 38px);
+  box-sizing: border-box;
 }
 
 .logo {
   display: flex;
   justify-content: flex-start;
-  margin-left: 56px;
   gap: 8px;
 }
 
 .section {
   display: flex;
   justify-content: flex-end;
-  gap: 32px;
+  gap: clamp(16px, 2.2vw, 32px);
   cursor: pointer;
-  margin-right: 64px;
+  // margin-right: clamp(16px, 4vw, 64px);
 }
 
 .text {
   font-family: Light, sans-serif;
   color: var(--black-color);
-  font-size: 18px;
+  font-size: clamp(14px, 1.8vw, 18px);
 }
 
-@media(max-width: 820px) {
+.section a,
+.section a:hover,
+.section a:visited,
+.section a:active {
+  color: var(--black-color);
+  text-decoration: none;
+}
+
+@media (max-width: 820px) {
   .text {
     display: none;
+  }
+
+  .content {
+    padding: 0 16px;
+  }
+
+  .logo {
+    margin-left: 0;
+  }
+
+  .section {
+    margin-right: 0;
   }
 }
 
 .logoLink {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   text-decoration: none;
   cursor: pointer;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }

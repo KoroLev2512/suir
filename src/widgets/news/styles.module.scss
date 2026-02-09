@@ -1,22 +1,26 @@
 @use "../../../styles/mixins" as *;
 
 .news {
-  position: relative;
-  background: #f0f0f0;
-  min-height: 932px;
-  padding: 128px 0;
   width: 100%;
+  background: #f0f0f0;
+}
+
+.newsInner {
+  position: relative;
+  min-height: 1100px;
+  padding: clamp(48px, 8.9vw, 128px) clamp(16px, 4.4vw, 64px);
   max-width: 1440px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .textGroup {
   position: absolute;
-  left: 64px;
-  top: 216px;
+  left: clamp(16px, 4.4vw, 64px);
+  top: clamp(80px, 15vw, 216px);
   display: flex;
   flex-direction: column;
-  width: 469px;
+  width: min(469px, 100%);
   z-index: 2;
 }
 
@@ -24,8 +28,8 @@
   @include heading-1;
   font-family: "Helvetica", sans-serif;
   font-weight: 700;
-  font-size: 64px;
-  line-height: 64px;
+  font-size: clamp(32px, 4.4vw, 64px);
+  line-height: 1.1;
   color: #2c2933;
   margin: 0;
 }
@@ -43,21 +47,22 @@
 .descriptionText {
   @include paragraph-1;
   font-family: "SF Pro Display", sans-serif;
-  font-size: 20px;
+  font-size: clamp(16px, 1.4vw, 20px);
   font-weight: 300;
-  line-height: 28px;
+  line-height: 1.4;
   color: #4b4557;
   margin: 0;
-  width: 433px;
+  width: 100%;
+  max-width: 433px;
 }
 
 .cardsContainer {
   position: absolute;
   left: 619px;
-  top: 432px;
+  top: clamp(80px, 15vw, 216px);
   display: flex;
   flex-direction: row;
-  gap: 24px;
+  gap: clamp(16px, 2.2vw, 24px);
   align-items: flex-start;
   width: 757px;
   z-index: 2;
@@ -81,11 +86,13 @@
   border-bottom: 8px solid #8a62d8;
   display: flex;
   flex-direction: column;
-  width: 310px;
+  width: min(310px, 100%);
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .rightColumn .card {
-  width: 421px;
+  width: min(421px, 100%);
 }
 
 .cardImage {
@@ -115,9 +122,9 @@
 .cardText {
   @include paragraph-1;
   font-family: "SF Pro Display", sans-serif;
-  font-size: 20px;
+  font-size: clamp(16px, 1.4vw, 20px);
   font-weight: 300;
-  line-height: 28px;
+  line-height: 1.4;
   color: #4b4557;
   margin: 0;
 }
@@ -138,4 +145,86 @@
   mix-blend-mode: darken;
   background: url('/images/achivements.svg') no-repeat center;
   background-size: contain;
+}
+
+@media (max-width: 1440px) {
+  .newsInner {
+    min-height: auto;
+    padding-bottom: 80px;
+  }
+
+  .textGroup {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .cardsContainer {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    max-width: 100%;
+    flex-wrap: wrap;
+    margin-top: 0;
+  }
+
+  .leftColumn {
+    width: 100%;
+  }
+
+  .rightColumn {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .rightColumn .card {
+    flex: 1 1 300px;
+    min-width: 280px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .newsInner {
+    padding: 48px 40px 64px;
+  }
+}
+
+@media (max-width: 768px) {
+  .newsInner {
+    padding: 40px 24px 56px;
+  }
+
+  .title {
+    font-size: clamp(28px, 7vw, 40px);
+  }
+
+  .cardsContainer {
+    flex-direction: column;
+  }
+
+  .card,
+  .rightColumn .card {
+    width: 100%;
+    min-width: 0;
+    flex: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .newsInner {
+    padding: 32px 16px 48px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .descriptionText {
+    font-size: 16px;
+  }
 }

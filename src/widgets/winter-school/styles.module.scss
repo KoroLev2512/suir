@@ -1,16 +1,20 @@
 @use "../../../styles/mixins" as *;
 
 .winterSchool {
-  position: relative;
-  background: #E2E0F5;
-  min-height: 800px;
   width: 100%;
+  background: #E2E0F5;
+}
+
+.winterSchoolInner {
+  position: relative;
+  min-height: clamp(500px, 56vw, 800px);
   max-width: 1440px;
   margin: 0 auto;
   overflow: hidden;
   padding: 80px 0;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 .decorativeBackground {
@@ -23,10 +27,10 @@
   &::before {
     content: "2026";
     position: absolute;
-    right: 140px;
-    top: 100px;
+    right: clamp(20px, 10vw, 140px);
+    top: clamp(40px, 7vw, 100px);
     font-family: "Helvetica", sans-serif;
-    font-size: 300px;
+    font-size: clamp(120px, 21vw, 300px);
     font-weight: 900;
     color: rgba(179, 174, 226, 0.15);
     line-height: 1;
@@ -38,8 +42,8 @@
   position: relative;
   z-index: 10;
   width: 100%;
-  padding-left: 64px;
-  margin-top: 40px;
+  padding-left: clamp(16px, 4.4vw, 64px);
+  margin-top: clamp(24px, 2.8vw, 40px);
 }
 
 .dateBlock {
@@ -81,12 +85,19 @@
   display: flex;
   flex: 1;
   width: 100%;
-  padding: 0 64px;
-  margin-top: -60px;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 clamp(16px, 4.4vw, 32px);
+  margin-top: clamp(-80px, -4.2vw, -60px);
+  box-sizing: border-box;
+  gap: clamp(24px, 3vw, 48px);
 }
 
 .leftSide {
-  flex: 1;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 55%;
   display: flex;
   align-items: flex-end;
   position: relative;
@@ -94,7 +105,7 @@
 
 .robotContainer {
   width: 100%;
-  max-width: 650px;
+  max-width: 550px;
 
   .robot {
     width: 100%;
@@ -105,12 +116,14 @@
 }
 
 .rightSide {
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding-left: 40px;
+  padding-left: clamp(20px, 2.5vw, 40px);
 }
 
 .headerGroup {
@@ -204,17 +217,25 @@
     flex-direction: column;
     margin-top: 0;
     padding: 40px 32px;
+    max-width: 100%;
   }
 
   .rightSide {
     padding-left: 0;
     align-items: flex-start;
     text-align: left;
+    max-width: 100%;
   }
 
   .leftSide {
     justify-content: center;
     margin-bottom: 40px;
+    max-width: 100%;
+  }
+
+  .robotContainer {
+    max-width: 400px;
+    margin: 0 auto;
   }
 
   .dateBanner {
@@ -223,6 +244,10 @@
 }
 
 @media (max-width: 768px) {
+  .dateBanner {
+    padding-left: 24px;
+  }
+
   .dateBlock {
     padding: 8px 24px;
     flex-wrap: wrap;
@@ -249,5 +274,52 @@
   .ctaButton {
     width: 100%;
     padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .winterSchoolInner {
+    padding: 32px 16px 48px;
+    min-height: auto;
+  }
+
+  .dateBanner {
+    padding-left: 16px;
+    margin-top: 16px;
+  }
+
+  .dateBlock {
+    padding: 8px 16px;
+  }
+
+  .dateNumber,
+  .dateSeparator {
+    font-size: 36px;
+  }
+
+  .dateMonth {
+    font-size: 14px;
+  }
+
+  .mainTitle {
+    font-size: 28px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .contentWrapper {
+    padding: 0 16px;
+    margin-top: 0;
+  }
+
+  .decorativeBackground::before {
+    font-size: 80px;
+    right: 10px;
   }
 }

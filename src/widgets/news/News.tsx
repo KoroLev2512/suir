@@ -21,6 +21,7 @@ export const News = () => {
 
     return (
         <div className={styles.news}>
+            <div className={styles.newsInner}>
             <div className={styles.textGroup}>
                 <Text as="h2" className={styles.title}>Новости</Text>
                 <div className={styles.spacer}></div>
@@ -74,6 +75,7 @@ export const News = () => {
                 </div>
             </div>
             <div className={styles.decorativeVector}></div>
+            </div>
         </div>
     );
 };

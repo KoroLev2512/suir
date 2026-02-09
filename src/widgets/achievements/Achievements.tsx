@@ -24,6 +24,7 @@ export const Achievements = () => {
 
     return (
         <div className={styles.bkg}>
+            <div className={styles.bkgInner}>
             <div className={styles.textGroup}>
                 <Text as="h2" className={styles.title}>Достижения</Text>
                 <div className={styles.spacer}></div>
@@ -92,6 +93,7 @@ export const Achievements = () => {
                 </div>
             </div>
             <div className={styles.decorativeVector}></div>
+            </div>
         </div>
     );
 };

@@ -33,6 +33,7 @@ export const Education = () => {
 
     return (
         <div className={styles.education}>
+            <div className={styles.educationInner}>
             <div className={styles.textGroup}>
                 <Text as="h2" className={styles.title}>Образование</Text>
                 <div className={styles.spacer}></div>
@@ -67,6 +68,7 @@ export const Education = () => {
                 ))}
             </div>
             <div className={styles.decorativeVector}></div>
+            </div>
         </div>
     );
 };

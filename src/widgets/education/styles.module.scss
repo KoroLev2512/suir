@@ -1,22 +1,26 @@
 @use "../../../styles/mixins" as *;
 
 .education {
-  position: relative;
-  background: #f0f0f0;
-  min-height: 932px;
-  padding: 128px 0;
   width: 100%;
+  background: #f0f0f0;
+}
+
+.educationInner {
+  position: relative;
+  min-height: 932px;
+  padding: clamp(48px, 8.9vw, 128px) clamp(16px, 4.4vw, 64px);
   max-width: 1440px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .textGroup {
   position: absolute;
-  left: 64px;
-  top: 216px;
+  left: clamp(16px, 4.4vw, 64px);
+  top: clamp(80px, 15vw, 216px);
   display: flex;
   flex-direction: column;
-  width: 469px;
+  width: min(469px, 100%);
   z-index: 2;
 }
 
@@ -24,8 +28,8 @@
   @include heading-1;
   font-family: "Helvetica", sans-serif;
   font-weight: 700;
-  font-size: 64px;
-  line-height: 64px;
+  font-size: clamp(32px, 4.4vw, 64px);
+  line-height: 1.1;
   color: #2c2933;
   margin: 0;
 }
@@ -37,21 +41,23 @@
 .description {
   @include paragraph-1;
   font-family: "SF Pro Display", sans-serif;
-  font-size: 20px;
+  font-size: clamp(16px, 1.4vw, 20px);
   font-weight: 300;
-  line-height: 28px;
+  line-height: 1.4;
   color: #4b4557;
   margin: 0;
-  width: 433px;
+  width: 100%;
+  max-width: 433px;
 }
 
 .cardsContainer {
   position: absolute;
-  left: 64px;
+  left: clamp(16px, 4.4vw, 64px);
   top: 432px;
   display: flex;
-  gap: 24px;
+  gap: clamp(16px, 2.2vw, 24px);
   z-index: 2;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -59,8 +65,10 @@
   border-bottom: 8px solid #8a62d8;
   display: flex;
   flex-direction: column;
-  padding: 32px 24px 64px;
-  width: 373px;
+  padding: clamp(24px, 2.2vw, 32px) clamp(20px, 1.7vw, 24px) clamp(48px, 4.4vw, 64px);
+  width: min(373px, 100%);
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .cardHeader {
@@ -115,12 +123,13 @@
 .cardDescription {
   @include paragraph-2;
   font-family: "SF Pro Display", sans-serif;
-  font-size: 16px;
+  font-size: clamp(14px, 1.1vw, 16px);
   font-weight: 300;
-  line-height: 24px;
+  line-height: 1.5;
   color: #2c2933;
   margin: 0;
-  width: 370px;
+  width: 100%;
+  max-width: 370px;
 }
 
 .footer {
@@ -170,4 +179,67 @@
   opacity: 0.3;
   background: url('/images/achivements.svg') no-repeat center;
   background-size: contain;
+}
+
+@media (max-width: 1440px) {
+  .educationInner {
+    min-height: auto;
+    padding-bottom: 80px;
+  }
+
+  .textGroup {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .cardsContainer {
+    position: relative;
+    left: auto;
+    top: auto;
+    margin-top: 0;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 1024px) {
+  .educationInner {
+    padding: 48px 40px 64px;
+  }
+}
+
+@media (max-width: 768px) {
+  .educationInner {
+    padding: 40px 24px 56px;
+  }
+
+  .title {
+    font-size: clamp(28px, 7vw, 40px);
+  }
+
+  .cardsContainer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .card {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .educationInner {
+    padding: 32px 16px 48px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
 }
