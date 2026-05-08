@@ -1,0 +1,18 @@
+.page {
+  min-height: 100vh;
+  background: #fbfbfb;
+}
+
+.main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.widgetContainer {
+  width: 100%;
+  max-width: 1200px;
+}
