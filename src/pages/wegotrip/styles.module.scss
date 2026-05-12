@@ -16,3 +16,45 @@
   width: 100%;
   max-width: 1200px;
 }
+
+.widgetFrame {
+  display: block;
+  height: 580px;
+  min-height: 580px;
+  margin-left: -10px;
+  margin-right: -10px;
+  border: 0;
+}
+
+@media (max-width: 1024px) {
+  .main {
+    align-items: flex-start;
+  }
+
+  .widgetFrame {
+    height: 1120px;
+    min-height: 1120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 16px;
+  }
+
+  .widgetFrame {
+    height: 1480px;
+    min-height: 1480px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 12px;
+  }
+
+  .widgetFrame {
+    height: 1720px;
+    min-height: 1720px;
+  }
+}
