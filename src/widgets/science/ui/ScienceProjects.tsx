@@ -1,42 +1,27 @@
-import React from 'react';
-import Link from 'next/link';
-import { Text } from "@/shared/Text";
+import React from "react";
+import { Section } from "@/shared/ui/Section";
 import { projects } from "../data";
-import styles from './ScienceProjects.module.scss';
 
-export const ScienceProjects = () => {
-    return (
-        <section className={styles.section}>
-            <div className={styles.container}>
-                <Text as="h2" className={styles.title}>Научные проекты</Text>
+import styles from "./ScienceProjects.module.scss";
 
-                <div className={styles.grid}>
-                    {projects.map((project, index) => (
-                        <div key={index} className={styles.card}>
-                            <div className={styles.cardHeader}>
-                                <Text as="h3" className={styles.cardTitle}>{project.title}</Text>
-                                <span className={styles.cardId}>{project.id}</span>
-                            </div>
-
-                            <div className={styles.cardBody}>
-                                <div className={styles.infoRow}>
-                                    <span className={styles.label}>Руководитель:</span> {project.leader}
-                                </div>
-                                <Text as="p" className={styles.description}>{project.description}</Text>
-                            </div>
-
-                            <div className={styles.cardFooter}>
-                                <div className={styles.dateRow}>
-                                    <span className={styles.label}>Даты проведения:</span> {project.dates}
-                                </div>
-                                <Link href={project.link} className={styles.arrowLink}>
-                                    &rarr;
-                                </Link>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-};
+export const ScienceProjects = () => (
+    <Section id="projects" title="Научные проекты">
+        <div className={styles.grid}>
+            {projects.map((project, index) => (
+                <article key={project.id} className={styles.card}>
+                    <div className={styles.cardHeader}>
+                        <h3 className={styles.cardTitle}>{project.title}</h3>
+                        <span className={styles.cardId}>{String(index + 1).padStart(2, "0")}</span>
+                    </div>
+                    <p className={styles.leader}>
+                        <span className={styles.label}>Руководитель:</span> {project.leader}
+                    </p>
+                    <p className={styles.description}>{project.description}</p>
+                    <p className={styles.dates}>
+                        <span className={styles.label}>Даты:</span> {project.dates}
+                    </p>
+                </article>
+            ))}
+        </div>
+    </Section>
+);

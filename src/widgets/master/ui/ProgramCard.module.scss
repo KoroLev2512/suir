@@ -1,0 +1,82 @@
+@use "../../../../styles/mixins" as *;
+
+.card {
+  @include card;
+  @include card-hover;
+  @include focus-ring;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: clamp(20px, 2.2vw, 28px);
+  color: inherit;
+  min-width: 0;
+
+  &:hover .arrow {
+    transform: translateX(6px);
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.title {
+  @include card-title;
+  overflow-wrap: anywhere;
+}
+
+.index {
+  font-family: "Bold", "Helvetica", sans-serif;
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1;
+  color: $c-ink;
+}
+
+.body {
+  flex: 1;
+}
+
+.label {
+  margin: 0 0 6px;
+  font-family: "Regular", "Helvetica", sans-serif;
+  font-size: 13px;
+  color: $c-muted;
+}
+
+.directions {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  li {
+    @include body-text;
+    font-size: 15px;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid $c-line;
+}
+
+.places {
+  font-family: "Medium", "Helvetica", sans-serif;
+  font-size: 14px;
+  color: $c-purple-dark;
+}
+
+.arrow {
+  flex-shrink: 0;
+  color: $c-purple;
+  transition: transform 0.2s ease;
+}

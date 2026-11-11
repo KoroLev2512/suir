@@ -1,0 +1,63 @@
+@use "../../../../styles/mixins" as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 28px;
+  font-family: "Semibold", "Helvetica", sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  border: 1.5px solid transparent;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  @include focus-ring;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  @include below($bp-sm) {
+    width: 100%;
+  }
+}
+
+.primary {
+  background: $c-purple;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(122, 82, 204, 0.3);
+
+  &:hover {
+    background: $c-purple-dark;
+    color: #fff;
+  }
+}
+
+.secondary {
+  background: transparent;
+  color: $c-ink;
+  border-color: $c-ink;
+
+  &:hover {
+    background: $c-ink;
+    color: #fff;
+  }
+}
+
+.light {
+  background: #fff;
+  color: $c-purple-dark;
+
+  &:hover {
+    background: $c-lavender-light;
+  }
+}
+
+.arrow {
+  flex-shrink: 0;
+}

@@ -1,35 +1,24 @@
-import React from 'react';
-import { Text } from "@/shared/Text";
-import { teachers } from "../data";
-import styles from './MasterTeachers.module.scss';
+import React from "react";
+import Link from "next/link";
+import { Section } from "@/shared/ui/Section";
+import { PersonCard } from "@/shared/ui/PersonCard";
+import { programHeads } from "../data";
 
-export const MasterTeachers = () => {
-    return (
-        <section className={styles.section}>
-            <div className={styles.container}>
-                <div className={styles.header}>
-                    <Text as="h2" className={styles.title}>Преподаватели</Text>
-                    <Text as="p" className={styles.description}>
-                        Ведущие эксперты, трекеры и научные сотрудники
-                    </Text>
-                    {/* Decorative starburst can be CSS or SVG */}
-                    <div className={styles.starburst}></div>
-                </div>
+import styles from "./MasterTeachers.module.scss";
 
-                <div className={styles.grid}>
-                    {teachers.map((teacher) => (
-                        <div key={teacher.id} className={styles.card}>
-                            <div className={styles.imageWrapper}>
-                                <img src={teacher.photo} alt={teacher.name} className={styles.photo} />
-                            </div>
-                            <div className={styles.info}>
-                                <Text as="h4" className={styles.name}>{teacher.name}</Text>
-                                <Text as="p" className={styles.role}>{teacher.role}</Text>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
-};
+export const MasterTeachers = () => (
+    <Section
+        id="teachers"
+        tone="lavender"
+        title="Руководители программ"
+        description="Ведущие учёные и эксперты факультета. Полный состав преподавателей — на странице каждой программы."
+    >
+        <div className={styles.grid}>
+            {programHeads.map((head) => (
+                <Link key={head.program.slug} href={`/master/${head.program.slug}#team`} className={styles.link}>
+                    <PersonCard name={head.name} photo={head.photo} role={head.program.title} />
+                </Link>
+            ))}
+        </div>
+    </Section>
+);

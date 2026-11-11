@@ -1,5 +1,5 @@
-import React from 'react';
-import { Header } from "@/widgets/header";
+import React from "react";
+import { PageLayout } from "@/shared/ui/PageLayout";
 import { Banner } from "@/widgets/banner";
 import { Info } from "@/widgets/info";
 import { Education } from "@/widgets/education";
@@ -7,25 +7,18 @@ import { Achievements } from "@/widgets/achievements";
 import { News } from "@/widgets/news";
 import { Partners } from "@/widgets/partners";
 import { WinterSchool } from "@/widgets/winter-school";
-import { Footer } from "@/widgets/footer";
-
-import styles from './styles.module.scss';
 
 const HomePage = () => {
     return (
-        <div className={styles.wrapper}>
-            <Header />
-            <main className={styles.main}>
-                <Banner />
-                <Info />
-                <Partners />
-                <Education />
-                <Achievements />
-                <News />
-                <WinterSchool />
-            </main>
-            <Footer />
-        </div>
+        <PageLayout description="Факультет систем управления и робототехники Университета ИТМО: бакалавриат, магистратура, аспирантура, научные лаборатории и проекты.">
+            <Banner />
+            <Info />
+            <Partners />
+            <Education />
+            <Achievements />
+            <News />
+            <WinterSchool />
+        </PageLayout>
     );
 };
 

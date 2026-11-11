@@ -1,60 +1,47 @@
-import React from 'react';
-import { Text } from "@/shared/Text";
+import React from "react";
+import Image from "next/image";
+import { Button } from "@/shared/ui/Button";
+import { externalLinks } from "@/shared/config/navigation";
 
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
 
 export const WinterSchool = () => {
     return (
-        <div className={styles.winterSchool}>
-            <div className={styles.winterSchoolInner}>
-            <div className={styles.decorativeBackground}>
-                {/* Will add decorative pixel elements in CSS */}
-            </div>
+        <section className={styles.winterSchool}>
+            <div className={styles.inner}>
+                <span className={styles.year} aria-hidden="true">2027</span>
 
-            <div className={styles.dateBanner}>
                 <div className={styles.dateBlock}>
-                    <span className={styles.dateNumber}>29</span>
-                    <span className={styles.dateMonth}>/ января /</span>
+                    <span className={styles.dateNumber}>январь</span>
                     <span className={styles.dateSeparator}>—</span>
-                    <span className={styles.dateNumber}>03</span>
-                    <span className={styles.dateMonth}>/ февраля /</span>
-                </div>
-            </div>
-
-            <div className={styles.contentWrapper}>
-                <div className={styles.leftSide}>
-                    <div className={styles.robotContainer}>
-                        <img src="/images/robot_winter.png" alt="Robot" className={styles.robot} />
-                    </div>
+                    <span className={styles.dateNumber}>февраль</span>
                 </div>
 
-                <div className={styles.rightSide}>
-                    <div className={styles.headerGroup}>
-                        <Text as="h2" className={styles.title}>зимняя школа</Text>
-                        <Text as="p" className={styles.subtitle}>
-                            по робототехнике и системам управления
-                        </Text>
+                <div className={styles.content}>
+                    <div className={styles.robot}>
+                        <Image
+                            src="/images/robot_winter.png"
+                            alt=""
+                            width={675}
+                            height={670}
+                            sizes="(max-width: 1024px) 70vw, 40vw"
+                            className={styles.robotImage}
+                        />
                     </div>
 
-                    <div className={styles.mainActionGroup}>
-                        <div className={styles.headlineWithIcon}>
-                            <svg className={styles.playIcon} width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                    <div className={styles.text}>
+                        <h2 className={styles.title}>зимняя школа</h2>
+                        <p className={styles.subtitle}>по робототехнике и системам управления</p>
+                        <p className={styles.mainTitle}>
+                            <svg className={styles.playIcon} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                 <path d="M8 5v14l11-7z" />
                             </svg>
-                            <Text as="h1" className={styles.mainTitle}>
-                                поступи<br />
-                                в магистратуру<br />
-                                без экзаменов
-                            </Text>
-                        </div>
-
-                        <a href="https://roboschool.itmo.ru" target="_blank" rel="noopener noreferrer" className={styles.ctaButton}>
-                            Зарегистрироваться
-                        </a>
+                            <span>поступи в&nbsp;магистратуру без&nbsp;экзаменов</span>
+                        </p>
+                        <Button href={externalLinks.winterSchool} withArrow>Зарегистрироваться</Button>
                     </div>
                 </div>
             </div>
-            </div>
-        </div>
+        </section>
     );
 };

@@ -1,55 +1,36 @@
-.wrapper {
+@use "../../../styles/mixins" as *;
+
+.partners {
+  @include container;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  flex-direction: row;
-  min-height: 85px;
-  height: auto;
-  width: 100%;
-  max-width: 1400px;
-  gap: clamp(12px, 1.4vw, 20px);
-  margin: 0 auto;
-  padding: 24px clamp(16px, 4.4vw, 64px);
-  box-sizing: border-box;
+  justify-content: space-between;
   flex-wrap: wrap;
+  gap: 16px 32px;
+  padding-top: 24px;
+  padding-bottom: clamp(40px, 5vw, 64px);
+
+  @include below($bp-md) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
-.wrapper > :last-child {
-  margin-right: 0;
+.label {
+  margin: 0;
+  font-family: "Regular", "Helvetica", sans-serif;
+  font-size: 14px;
+  color: $c-muted;
 }
 
-.qsContainer {
+.logos {
   display: flex;
-  flex-direction: column;
   align-items: center;
-}
+  flex-wrap: wrap;
+  gap: clamp(16px, 3vw, 40px);
 
-.qsText {
-  color: #FFF;
-  font-family: "SF Pro Display", sans-serif;
-  font-size: clamp(14px, 1.1vw, 16px);
-  font-style: normal;
-  font-weight: 500;
-  line-height: 16px;
-  margin: 0 12px 0 0;
-  white-space: nowrap;
-}
-
-@media (max-width: 768px) {
-  .wrapper {
-    padding: 20px 24px;
-    min-height: 70px;
-    justify-content: center;
-  }
-
-  .qsText {
-    white-space: normal;
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .wrapper {
-    padding: 16px;
+  svg {
+    max-width: 40vw;
+    height: auto;
   }
 }

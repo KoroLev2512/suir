@@ -79,12 +79,40 @@ body {
 }
 
 body {
-  font-family: UltraLight, serif;
+  font-family: "Regular", "Helvetica", sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-style: normal;
-  overflow: auto;
+  color: #1A1A1A;
+  background: #FBFBFB;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 :root {
@@ -158,8 +186,6 @@ h1 {
 h2 {
   @include heading-2;
   color: var(--main-color);
-  margin-top: 130px;
-  margin-bottom: 20px;
 }
 
 h3 {

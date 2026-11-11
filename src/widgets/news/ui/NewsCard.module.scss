@@ -1,0 +1,103 @@
+@use "../../../../styles/mixins" as *;
+
+.card {
+  @include card;
+  @include card-hover;
+  @include focus-ring;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  color: inherit;
+
+  &:hover .arrow {
+    transform: translateX(6px);
+  }
+
+  &:hover .image {
+    transform: scale(1.03);
+  }
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: $c-lavender;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.category {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.92);
+  color: $c-purple-dark;
+  font-family: "Medium", "Helvetica", sans-serif;
+  font-size: 12px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  padding: clamp(16px, 2vw, 24px);
+}
+
+.date {
+  font-family: "Regular", "Helvetica", sans-serif;
+  font-size: 13px;
+  color: $c-muted;
+}
+
+.title {
+  @include card-title;
+}
+
+.excerpt {
+  @include body-text;
+  font-size: 15px;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.arrow {
+  margin-top: 6px;
+  color: $c-purple;
+  transition: transform 0.2s ease;
+}
+
+// Крупная карточка: на широких экранах картинка слева, текст справа
+.featured {
+  @media (min-width: #{$bp-lg + 1}) {
+    flex-direction: row;
+
+    .media {
+      flex: 1.3;
+      aspect-ratio: auto;
+      min-height: 360px;
+    }
+
+    .body {
+      flex: 1;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .title {
+      font-size: 28px;
+    }
+
+    .excerpt {
+      -webkit-line-clamp: 5;
+    }
+  }
+}

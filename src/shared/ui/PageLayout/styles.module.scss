@@ -1,0 +1,31 @@
+@use "../../../../styles/mixins" as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #FBFBFB;
+  // clip, а не hidden: не ломает position: sticky у шапки
+  overflow-x: clip;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 100;
+  padding: 10px 16px;
+  background: $c-purple;
+  color: #fff;
+
+  &:focus {
+    top: 16px;
+  }
+}

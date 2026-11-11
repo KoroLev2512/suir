@@ -1,0 +1,32 @@
+@use "../../../../styles/mixins" as *;
+
+.timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: 2px;
+  background: $c-line;
+  border: 2px solid $c-line;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: clamp(16px, 2vw, 24px);
+  background: $c-surface;
+  min-width: 0;
+}
+
+.date {
+  font-family: "Bold", "Helvetica", sans-serif;
+  font-size: clamp(18px, 1.6vw, 22px);
+  color: $c-purple;
+}
+
+.text {
+  @include body-text;
+  font-size: 15px;
+}

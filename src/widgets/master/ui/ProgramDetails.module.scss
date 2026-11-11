@@ -1,0 +1,169 @@
+@use "../../../../styles/mixins" as *;
+
+.aboutLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+
+  @include below($bp-lg) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.about p {
+  @include body-text;
+  font-size: clamp(16px, 1.25vw, 18px);
+  margin: 0 0 16px;
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+}
+
+.asideBlock {
+  min-width: 0;
+}
+
+.asideTitle {
+  margin: 0 0 12px;
+  font-family: "Semibold", "Helvetica", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $c-muted;
+}
+
+.plainList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    @include body-text;
+    color: $c-ink;
+    padding: 8px 0;
+    border-bottom: 1px solid $c-line;
+  }
+}
+
+.dates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 8px 12px;
+    background: $c-lavender-light;
+    font-family: "Medium", "Helvetica", sans-serif;
+    font-size: 14px;
+    color: $c-ink;
+  }
+}
+
+.manager {
+  max-width: 480px;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  gap: clamp(12px, 2vw, 24px);
+
+  @include below($bp-sm) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.more {
+  display: block;
+  margin: clamp(24px, 3vw, 40px) auto 0;
+  min-height: 48px;
+  padding: 12px 28px;
+  border: 1.5px solid $c-ink;
+  border-radius: 4px;
+  background: transparent;
+  font-family: "Semibold", "Helvetica", sans-serif;
+  font-size: 15px;
+  color: $c-ink;
+  cursor: pointer;
+  @include focus-ring;
+
+  &:hover {
+    background: $c-ink;
+    color: #fff;
+  }
+}
+
+.reviews {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+  align-items: start;
+
+  @include below($bp-md) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: clamp(20px, 2.4vw, 32px);
+  background: $c-gray-bg;
+  border-left: 4px solid $c-purple;
+  min-width: 0;
+}
+
+.quote {
+  margin: 0;
+
+  p {
+    @include body-text;
+    font-size: 15px;
+    margin: 0 0 10px;
+  }
+}
+
+.clamped {
+  max-height: 11.5em;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent);
+  mask-image: linear-gradient(to bottom, #000 60%, transparent);
+}
+
+.readMore {
+  align-self: flex-start;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: "Medium", "Helvetica", sans-serif;
+  font-size: 14px;
+  color: $c-purple-dark;
+  cursor: pointer;
+  text-decoration: underline;
+  @include focus-ring;
+}
+
+.author {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: "Regular", "Helvetica", sans-serif;
+  font-size: 14px;
+  color: $c-muted;
+
+  b {
+    font-family: "Semibold", "Helvetica", sans-serif;
+    font-size: 16px;
+    color: $c-ink;
+  }
+}

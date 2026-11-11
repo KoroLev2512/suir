@@ -1,0 +1,54 @@
+@use "../../../../styles/mixins" as *;
+
+.filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: clamp(20px, 3vw, 32px);
+  // на узких экранах категории прокручиваются горизонтально, а не переносятся в столбик
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.filter {
+  flex-shrink: 0;
+  min-height: 40px;
+  padding: 8px 16px;
+  border: 1.5px solid $c-line;
+  border-radius: 999px;
+  background: $c-surface;
+  font-family: "Medium", "Helvetica", sans-serif;
+  font-size: 14px;
+  color: $c-ink;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  @include focus-ring;
+
+  &:hover {
+    border-color: $c-purple;
+  }
+}
+
+.active {
+  background: $c-purple;
+  border-color: $c-purple;
+  color: #fff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+
+  @include below($bp-lg) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include below($bp-md) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

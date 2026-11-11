@@ -1,45 +1,45 @@
 @use "../../../styles/mixins" as *;
 
 .footer {
-  background: #65538a;
   width: 100%;
-  padding: clamp(32px, 4.4vw, 64px) 0;
-  box-sizing: border-box;
+  background: $c-footer;
+  color: #fff;
+  padding: clamp(40px, 6vw, 72px) 0;
 }
 
 .content {
-  display: flex;
-  flex-direction: row;
-  max-width: 1440px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 clamp(16px, 4.4vw, 64px);
-  gap: clamp(16px, 2.2vw, 24px);
-  box-sizing: border-box;
+  @include container;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 64px);
+
+  @include below($bp-lg) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+    .university {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @include below($bp-sm) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  a {
+    color: inherit;
+    @include focus-ring;
+  }
 }
 
 .university {
   display: flex;
   flex-direction: column;
-  width: min(533px, 100%);
   min-width: 0;
 }
 
 .logo {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.logoImage {
-  height: clamp(56px, 5.4vw, 77px);
-  width: min(260px, 100%);
-  max-width: 260px;
-  cursor: pointer;
-
-  a {
-    display: block;
-  }
+  display: inline-flex;
+  width: clamp(150px, 18vw, 220px);
 
   svg {
     width: 100%;
@@ -48,207 +48,88 @@
 }
 
 .logoText {
-  @include paragraph-3;
-  font-family: "SF Pro Display", sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 16px;
-  color: #fbfbfb;
-  margin: 0;
+  margin: 10px 0 0;
+  font-family: "Semibold", "Helvetica", sans-serif;
+  font-size: 14px;
+  color: #fff;
 }
 
-.spacer {
-  height: 32px;
-}
-
-.spacerSmall {
-  height: 4px;
-}
-
-.spacerLarge {
-  height: 40px;
-}
-
-.spacerHorizontal {
-  width: 24px;
-}
-
-.copyright {
-  font-family: "SF Pro Display", sans-serif;
-  font-size: 10px;
-  font-weight: 300;
-  line-height: 14px;
-  color: #fbfbfb;
-  margin: 0;
-}
-
-.rules {
-  font-family: "SF Pro Display", sans-serif;
-  font-size: 10px;
-  font-weight: 300;
-  line-height: 14px;
-  color: #fbfbfb;
-  margin: 0;
-}
-
-.bold {
-  margin-left: 2px;
-  font-weight: 500;
-}
-
-.items {
+.legal {
   display: flex;
   flex-direction: column;
-  width: min(310px, 100%);
-  padding-top: 12px;
+  gap: 6px;
+  margin-top: clamp(24px, 4vw, 48px);
+  font-family: "Regular", "Helvetica", sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.75);
+
+  a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
 }
 
-.item {
-  @include paragraph-2;
-  font-family: "SF Pro Display", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  color: #fbfbfb;
-  margin: 0;
-  height: 24px;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: "Medium", "Helvetica", sans-serif;
+  font-size: 15px;
 
-  &:hover {
-    opacity: 0.8;
-  }
+  a {
+    align-self: flex-start;
 
-  a,
-  a:hover,
-  a:visited,
-  a:active {
-    color: #fbfbfb;
-    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
 .contacts {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  padding-top: 12px;
-}
-
-.info {
-  display: flex;
-  flex-direction: column;
-  width: min(437px, 100%);
+  gap: 8px;
   min-width: 0;
 }
 
 .contactTitle {
-  @include paragraph-2;
-  font-family: "SF Pro Display", sans-serif;
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 24px;
-  color: #fbfbfb;
-  margin: 0;
+  margin: 0 0 4px;
+  font-family: "Regular", "Helvetica", sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .contactText {
-  @include paragraph-2;
-  font-family: "SF Pro Display", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  color: #fbfbfb;
   margin: 0;
+  font-family: "Semibold", "Helvetica", sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #fff;
 }
 
 .socialIcons {
   display: flex;
   gap: 12px;
-  align-items: center;
+  margin-top: 16px;
 }
 
 .icon {
-  width: 32px;
-  height: 32px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: opacity 0.2s ease;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  transition: background-color 0.2s ease;
 
   &:hover {
-    opacity: 0.8;
+    background: rgba(255, 255, 255, 0.24);
   }
 
   svg {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-@media (max-width: 1024px) {
-  .content {
-    flex-wrap: wrap;
-    gap: 32px;
-  }
-
-  .university {
-    width: 100%;
-    max-width: 533px;
-  }
-
-  .items {
-    width: auto;
-    min-width: 200px;
-  }
-
-  .spacerHorizontal {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .footer {
-    padding: 40px 0;
-  }
-
-  .content {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0 24px;
-    gap: 32px;
-  }
-
-  .university,
-  .items,
-  .contacts,
-  .info {
-    width: 100%;
-    max-width: none;
-  }
-
-  .logoText,
-  .copyright,
-  .rules {
-    font-size: clamp(9px, 2vw, 10px);
-  }
-}
-
-@media (max-width: 480px) {
-  .footer {
-    padding: 32px 0;
-  }
-
-  .content {
-    padding: 0 16px;
-    gap: 24px;
-  }
-
-  .contactTitle,
-  .contactText,
-  .item {
-    font-size: 14px;
-    line-height: 20px;
+    max-width: 24px;
+    max-height: 24px;
   }
 }

@@ -1,87 +1,59 @@
-import React from 'react';
+import React from "react";
 import Link from "next/link";
-import { Text } from "@/shared/Text";
 import { Vk, Tg, Youtube, ItmoLogo } from "@/shared/lib/icons";
+import { externalLinks, facultyContacts, mainNavigation } from "@/shared/config/navigation";
 
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
+
+const socials = [
+    { href: externalLinks.vk, label: "ВКонтакте", Icon: Vk },
+    { href: externalLinks.youtube, label: "YouTube", Icon: Youtube },
+    { href: externalLinks.telegram, label: "Telegram", Icon: Tg },
+];
 
 export const Footer = () => {
+    const year = new Date().getFullYear();
+
     return (
-        <div className={styles.footer}>
+        <footer className={styles.footer}>
             <div className={styles.content}>
                 <div className={styles.university}>
-                    <div className={styles.logo}>
-                        <div className={styles.logoImage}>
-                            <Link href="/" passHref legacyBehavior>
-                                <a><ItmoLogo /></a>
-                            </Link>
-                        </div>
-                        <Text as="p" className={styles.logoText}>
-                            факультет систем управления и робототехники
-                        </Text>
-                    </div>
-                    <div className={styles.spacer}></div>
-                    <Text as="p" className={styles.copyright}>
-                        © 1993-2023. Университет ИТМО. Политика по обработке персональных данных
-                    </Text>
-                    <div className={styles.spacerSmall}></div>
-                    <Text as="p" className={styles.rules}>
-                        Правила использования информации в доменной зоне <span className={styles.bold}>itmo.ru</span>
-                    </Text>
-                </div>
-                <div className={styles.spacerHorizontal}></div>
-                <div className={styles.items}>
-                    <div className={styles.item}>
-                        <a href="https://roboschool.itmo.ru" target="_blank" rel="noopener noreferrer">
-                            <Text as="span">Зимняя школа</Text>
+                    <Link href="/" className={styles.logo} aria-label="На главную">
+                        <ItmoLogo />
+                    </Link>
+                    <p className={styles.logoText}>факультет систем управления и робототехники</p>
+                    <div className={styles.legal}>
+                        <a href={externalLinks.itmo} target="_blank" rel="noopener noreferrer">© 1993–{year} Университет ИТМО</a>
+                        <a href={externalLinks.privacy} target="_blank" rel="noopener noreferrer">Политика по обработке персональных данных</a>
+                        <a href={externalLinks.infoRules} target="_blank" rel="noopener noreferrer">
+                            Правила использования информации в доменной зоне <b>itmo.ru</b>
                         </a>
                     </div>
-                    <div className={styles.spacerSmall}></div>
-                    <Text as="p" className={styles.item}>Бакалавриат</Text>
-                    <div className={styles.spacerSmall}></div>
-                    <div className={styles.item}>
-                        <Link href="/master" passHref legacyBehavior>
-                            <Text as="a">Магистратура</Text>
-                        </Link>
-                    </div>
-                    <div className={styles.spacerSmall}></div>
-                    <Text as="p" className={styles.item}>Аспирантура</Text>
-                    <div className={styles.spacerSmall}></div>
-                    <div className={styles.item}>
-                        <Link href="/science" passHref legacyBehavior>
-                            <Text as="a">Наука</Text>
-                        </Link>
-                    </div>
-                    <div className={styles.spacerSmall}></div>
-                    <Text as="p" className={styles.item}>Новости</Text>
                 </div>
-                <div className={styles.spacerHorizontal}></div>
+
+                <nav className={styles.links} aria-label="Разделы сайта">
+                    <Link href="/">Главная</Link>
+                    {mainNavigation.map((item) => (
+                        <Link key={item.href} href={item.href}>{item.label}</Link>
+                    ))}
+                    <a href={externalLinks.winterSchool} target="_blank" rel="noopener noreferrer">Зимняя школа</a>
+                </nav>
+
                 <div className={styles.contacts}>
-                    <div className={styles.info}>
-                        <Text as="p" className={styles.contactTitle}>Контактная информация</Text>
-                        <div className={styles.spacerSmall}></div>
-                        <Text as="p" className={styles.contactText}>
-                            Санкт-Петербург, Кронверкский проспект, 49
-                        </Text>
-                        <div className={styles.spacerSmall}></div>
-                        <Text as="p" className={styles.contactText}>
-                            +7 (812) 457-18-56
-                        </Text>
-                    </div>
-                    <div className={styles.spacerLarge}></div>
+                    <p className={styles.contactTitle}>Контактная информация</p>
+                    <p className={styles.contactText}>{facultyContacts.address}</p>
+                    <a className={styles.contactText} href={`tel:${facultyContacts.phone.replace(/[^\d+]/g, "")}`}>
+                        {facultyContacts.phone}
+                    </a>
                     <div className={styles.socialIcons}>
-                        <div className={styles.icon}>
-                            <Vk />
-                        </div>
-                        <div className={styles.icon}>
-                            <Youtube />
-                        </div>
-                        <div className={styles.icon}>
-                            <Tg />
-                        </div>
+                        {socials.map(({ href, label, Icon }) => (
+                            <a key={href} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className={styles.icon}>
+                                <Icon />
+                            </a>
+                        ))}
                     </div>
                 </div>
             </div>
-        </div>
+        </footer>
     );
 };

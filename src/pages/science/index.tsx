@@ -1,24 +1,29 @@
-import React from 'react';
-import { Header } from "@/widgets/header";
-import { Footer } from "@/widgets/footer";
-import { ScienceHero } from "@/widgets/science/ui/ScienceHero";
-import { ScienceProjects } from "@/widgets/science/ui/ScienceProjects";
-import { ScienceLabs } from "@/widgets/science/ui/ScienceLabs";
+import React from "react";
+import { PageLayout } from "@/shared/ui/PageLayout";
+import { PageHero } from "@/shared/ui/PageHero";
+import { Button } from "@/shared/ui/Button";
+import { ScienceFacts, ScienceLabs, ScienceProjects } from "@/widgets/science";
 
-import styles from './styles.module.scss';
-
-const SciencePage = () => {
-    return (
-        <div className={styles.wrapper}>
-            <Header />
-            <main className={styles.main}>
-                <ScienceHero />
-                <ScienceProjects />
-                <ScienceLabs />
-            </main>
-            <Footer />
-        </div>
-    );
-};
+const SciencePage = () => (
+    <PageLayout
+        title="Наука"
+        description="Научные проекты и лаборатории факультета систем управления и робототехники ИТМО."
+    >
+        <PageHero
+            label="Факультет СУиР"
+            title="Научная деятельность"
+            description="Сотрудники факультета активно занимаются научной деятельностью. Около трети всех сотрудников занимают исключительно научные должности."
+            actions={
+                <>
+                    <Button href="#labs" withArrow>Лаборатории</Button>
+                    <Button href="#projects" variant="secondary">Проекты</Button>
+                </>
+            }
+            aside={<ScienceFacts />}
+        />
+        <ScienceProjects />
+        <ScienceLabs />
+    </PageLayout>
+);
 
 export default SciencePage;

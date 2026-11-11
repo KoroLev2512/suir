@@ -1,0 +1,38 @@
+@use "../../../../styles/mixins" as *;
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+  margin: 0;
+  // рамки рисуются у ячеек, поэтому неполный ряд не оставляет «дыр» другого цвета
+  border-top: 1px solid $c-line;
+  border-left: 1px solid $c-line;
+  background: $c-surface;
+}
+
+.item {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 6px;
+  padding: clamp(16px, 2vw, 24px);
+  border-right: 1px solid $c-line;
+  border-bottom: 1px solid $c-line;
+  min-width: 0;
+}
+
+.value {
+  margin: 0;
+  font-family: "Bold", "Helvetica", sans-serif;
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 1;
+  color: $c-purple;
+  white-space: nowrap;
+}
+
+.label {
+  font-family: "Regular", "Helvetica", sans-serif;
+  font-size: 14px;
+  line-height: 1.35;
+  color: $c-text;
+}

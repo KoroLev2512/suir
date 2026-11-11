@@ -1,0 +1,181 @@
+@use "../../../../styles/mixins" as *;
+
+.specialties {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+
+  @include below($bp-lg) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include below($bp-md) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.specialty {
+  @include card;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: clamp(18px, 2.2vw, 28px);
+  min-width: 0;
+}
+
+.code {
+  font-family: "Bold", "Helvetica", sans-serif;
+  font-size: clamp(26px, 2.6vw, 34px);
+  line-height: 1;
+  color: $c-purple;
+}
+
+.specialtyTitle {
+  @include card-title;
+  flex: 1;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding-top: 14px;
+  border-top: 1px solid $c-line;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: "Medium", "Helvetica", sans-serif;
+    font-size: 14px;
+    color: $c-purple-dark;
+    @include focus-ring;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.admission {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+
+  @include below($bp-lg) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.subTitle {
+  margin: 0 0 16px;
+  font-family: "Semibold", "Helvetica", sans-serif;
+  font-size: clamp(19px, 1.7vw, 23px);
+  color: $c-ink;
+
+  &:not(:first-child) {
+    margin-top: clamp(28px, 3.5vw, 44px);
+  }
+}
+
+.text p {
+  @include body-text;
+  margin: 0 0 12px;
+}
+
+.actions {
+  margin-top: 24px;
+}
+
+.useful {
+  padding: clamp(20px, 2.4vw, 32px);
+  background: $c-lavender-light;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li + li {
+    border-top: 1px solid $c-line;
+  }
+
+  a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    font-family: "Medium", "Helvetica", sans-serif;
+    font-size: 15px;
+    color: $c-ink;
+    @include focus-ring;
+
+    svg {
+      flex-shrink: 0;
+      color: $c-purple;
+      transition: transform 0.2s ease;
+    }
+
+    &:hover {
+      color: $c-purple-dark;
+
+      svg {
+        transform: translateX(4px);
+      }
+    }
+  }
+}
+
+.councils {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+
+  @include below($bp-md) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.council {
+  @include card;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: clamp(20px, 2.4vw, 32px);
+  min-width: 0;
+
+  ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+
+  li {
+    @include body-text;
+    margin-bottom: 6px;
+  }
+}
+
+.points {
+  list-style: none;
+  padding: 0 !important;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px dashed $c-line;
+  }
+
+  b {
+    flex-shrink: 0;
+    font-family: "Bold", "Helvetica", sans-serif;
+    color: $c-purple-dark;
+    white-space: nowrap;
+  }
+}

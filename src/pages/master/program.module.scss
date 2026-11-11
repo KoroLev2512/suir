@@ -1,0 +1,10 @@
+@use "../../../styles/mixins" as *;
+
+.stats {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  // стоимость — на всю ширину
+  > :last-child {
+    grid-column: 1 / -1;
+  }
+}

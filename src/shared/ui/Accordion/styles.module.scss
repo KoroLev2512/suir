@@ -1,0 +1,102 @@
+@use "../../../../styles/mixins" as *;
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid $c-line;
+}
+
+.item {
+  border-bottom: 1px solid $c-line;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: clamp(18px, 2vw, 24px) 0;
+  font-family: "Semibold", "Helvetica", sans-serif;
+  font-size: clamp(18px, 1.6vw, 22px);
+  color: $c-ink;
+  cursor: pointer;
+  list-style: none;
+  @include focus-ring;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  &:hover {
+    color: $c-purple-dark;
+  }
+}
+
+.icon {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: $c-lavender;
+  transition: background-color 0.2s ease;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 12px;
+    height: 2px;
+    background: $c-purple-dark;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease;
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}
+
+.item[open] .icon {
+  background: $c-purple;
+
+  &::before,
+  &::after {
+    background: #fff;
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+.content {
+  padding-bottom: clamp(20px, 2.4vw, 32px);
+  max-width: 900px;
+
+  p,
+  li {
+    @include body-text;
+  }
+
+  p {
+    margin: 0 0 12px;
+  }
+
+  ul {
+    margin: 0 0 16px;
+    padding-left: 20px;
+  }
+
+  li {
+    margin-bottom: 6px;
+  }
+
+  a {
+    color: $c-purple-dark;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+}

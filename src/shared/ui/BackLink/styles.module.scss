@@ -1,0 +1,16 @@
+@use "../../../../styles/mixins" as *;
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  font-family: "Medium", "Helvetica", sans-serif;
+  font-size: 15px;
+  color: $c-purple-dark;
+  @include focus-ring;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

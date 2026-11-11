@@ -1,0 +1,46 @@
+@use "../../../../styles/mixins" as *;
+
+.facts {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: clamp(20px, 3vw, 36px);
+  list-style: none;
+  background: $c-surface;
+  box-shadow: 0 16px 40px rgba(31, 22, 64, 0.1);
+}
+
+.fact {
+  display: grid;
+  grid-template-columns: minmax(96px, auto) minmax(0, 1fr);
+  gap: 16px;
+  align-items: baseline;
+  padding: 16px 0;
+  border-bottom: 1px solid $c-line;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  @include below($bp-sm) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+}
+
+.value {
+  font-family: "Bold", "Helvetica", sans-serif;
+  font-size: clamp(20px, 2vw, 26px);
+  color: $c-purple;
+  white-space: nowrap;
+}
+
+.text {
+  @include body-text;
+  font-size: 15px;
+}

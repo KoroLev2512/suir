@@ -1,0 +1,111 @@
+@use "../../../../styles/mixins" as *;
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(40px, 7vw, 96px) 0 clamp(48px, 7vw, 96px);
+}
+
+.lavender {
+  background:
+    radial-gradient(circle at 18% 30%, rgba(255, 255, 255, 0.75) 0, rgba(255, 255, 255, 0) 38%),
+    $c-lavender;
+}
+
+.white {
+  background: $c-surface;
+}
+
+.inner {
+  @include container;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+
+.withSide {
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+
+  @include below($bp-lg) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.content {
+  min-width: 0;
+}
+
+.label {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 20px;
+  background: $c-purple;
+  color: #fff;
+  font-family: "Semibold", "Helvetica", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.title {
+  @include display-title;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+.description {
+  @include body-text;
+  max-width: 640px;
+  margin-top: 20px;
+  font-size: clamp(16px, 1.3vw, 19px);
+
+  p {
+    font: inherit;
+    color: inherit;
+    margin: 0 0 12px;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(31, 22, 64, 0.14);
+
+  @include below($bp-lg) {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.image {
+  object-fit: cover;
+}
+
+.cutout {
+  box-shadow: none;
+  aspect-ratio: 1 / 1;
+  max-height: 520px;
+
+  .image {
+    object-fit: contain;
+  }
+
+  @include below($bp-lg) {
+    aspect-ratio: 4 / 3;
+    max-height: 360px;
+  }
+}
+
+.aside {
+  min-width: 0;
+}

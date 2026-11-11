@@ -1,27 +1,28 @@
-import React from 'react';
-import {Text} from "@/shared/Text";
+import React from "react";
 
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
+
+const facts = [
+    { value: "700", text: "студентов ежегодно поступают на направления факультета" },
+    { value: "280", text: "сотрудников, из которых 180 преподавателей и 100 научных сотрудников" },
+    { value: "8", text: "образовательных программ: бакалавриат, магистратура и аспирантура" },
+];
 
 export const Info = () => {
     return (
-        <div className={styles.info}>
-            <div className={styles.numbers}>
-                <Text as="p" className={styles.text}>428 бюджетных мест</Text>
-                <div className={styles.spacer}></div>
-                <Text as="p" className={styles.text}>17 программ</Text>
-                <div className={styles.spacer}></div>
-                <Text as="p" className={styles.text}>32 специальности</Text>
-            </div>
-            <div className={styles.areas}>
-                <Text as="p" className={styles.areaText}>
-                    Научные и образовательные направления:
-                </Text>
-                <div className={styles.spacer}></div>
-                <Text as="p" className={styles.text}>
-                    Robotics and Control / Industrial Systems / Electrical Engineering Mathematics
-                </Text>
-            </div>
-        </div>
+        <section className={styles.info} aria-label="Факультет в цифрах">
+            <ul className={styles.facts}>
+                {facts.map((fact) => (
+                    <li key={fact.value} className={styles.fact}>
+                        <span className={styles.value}>{fact.value}</span>
+                        <span className={styles.text}>{fact.text}</span>
+                    </li>
+                ))}
+            </ul>
+            <p className={styles.areas}>
+                <span className={styles.areasLabel}>Научные и образовательные направления:</span>
+                Robotics and Control / Industrial Systems / Electrical Engineering / Mathematics
+            </p>
+        </section>
     );
 };

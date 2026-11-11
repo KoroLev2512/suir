@@ -1,0 +1,43 @@
+@use "../../../../styles/mixins" as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+  gap: clamp(12px, 2vw, 20px);
+}
+
+.card {
+  @include card;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: clamp(18px, 2vw, 24px);
+  min-width: 0;
+}
+
+.title {
+  font-family: "Medium", "Helvetica", sans-serif;
+  font-size: 15px;
+  line-height: 1.35;
+  color: $c-text;
+  margin: 0;
+}
+
+.amount {
+  margin: 0;
+  font-family: "Bold", "Helvetica", sans-serif;
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.1;
+  color: $c-ink;
+}
+
+.suffix {
+  font-family: "Regular", "Helvetica", sans-serif;
+  font-size: 15px;
+  color: $c-muted;
+}
+
+.note {
+  @include body-text;
+  font-size: 14px;
+}

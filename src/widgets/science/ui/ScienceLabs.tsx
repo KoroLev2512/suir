@@ -1,51 +1,62 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { Text } from "@/shared/Text";
-import { labs } from "../data";
-import styles from './ScienceLabs.module.scss';
+import React, { useState } from "react";
+import Image from "next/image";
 import classNames from "classnames";
+import { Section } from "@/shared/ui/Section";
+import { labs } from "../data";
+import type { Lab } from "../data";
 
-export const ScienceLabs = () => {
-    // Optional: Tab state if we want tabs, but let's do a list/grid first as per common designs
-    // Design might show tabs "Лаборатория nonlinear...", "Силовая..."
-    // Let's implement as a tabs system for better UX if the list is long, 
-    // or just a list of cards if few. Data has 3.
-    // Let's try a split view: List on left, Details on right, or simple cards.
-    // Based on "Laboratory" header, let's do cards for now to be safe.
+import styles from "./ScienceLabs.module.scss";
+
+const LabGallery = ({ lab }: { lab: Lab }) => {
+    const [active, setActive] = useState(0);
 
     return (
-        <section className={styles.section}>
-            <div className={styles.container}>
-                <Text as="h2" className={styles.title}>Лаборатория</Text>
-
-                <div className={styles.grid}>
-                    {labs.map((lab) => (
-                        <div key={lab.id} className={styles.card}>
-                            <div className={styles.cardHeader}>
-                                <Text as="h3" className={styles.cardTitle}>{lab.title}</Text>
-                                <span className={styles.arrowIcon}>&nearr;</span>
-                            </div>
-
-                            <Text as="p" className={styles.description}>{lab.description}</Text>
-
-                            <div className={styles.tasks}>
-                                <Text as="h4" className={styles.tasksTitle}>ЗАДАЧИ</Text>
-                                <ul className={styles.taskList}>
-                                    {lab.tasks.map((task, i) => (
-                                        <li key={i} className={styles.taskItem}>
-                                            {task}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            <div className={styles.footer}>
-                                {/* Tabs for Projects/Publications could go here if interactive */}
-                            </div>
-                        </div>
+        <div className={styles.gallery}>
+            <div className={styles.mainImage}>
+                <Image src={lab.images[active]} alt={lab.title} fill sizes="(max-width: 1024px) 100vw, 45vw" className={styles.image} />
+            </div>
+            {lab.images.length > 1 && (
+                <div className={styles.thumbs}>
+                    {lab.images.map((src, index) => (
+                        <button
+                            key={src}
+                            type="button"
+                            className={classNames(styles.thumb, { [styles.thumbActive]: index === active })}
+                            onClick={() => setActive(index)}
+                            aria-label={`Фото ${index + 1}`}
+                            aria-pressed={index === active}
+                        >
+                            <Image src={src} alt="" fill sizes="96px" className={styles.image} />
+                        </button>
                     ))}
                 </div>
-            </div>
-        </section>
+            )}
+        </div>
     );
 };
+
+export const ScienceLabs = () => (
+    <Section id="labs" tone="gray" title="Лаборатории">
+        <div className={styles.list}>
+            {labs.map((lab) => (
+                <article key={lab.id} id={lab.id} className={classNames(styles.lab, { [styles.withGallery]: lab.images.length > 0 })}>
+                    {lab.images.length > 0 && <LabGallery lab={lab} />}
+                    <div className={styles.content}>
+                        <h3 className={styles.title}>{lab.title}</h3>
+                        <p className={styles.description}>{lab.description}</p>
+                        <div className={styles.head}>
+                            <p className={styles.headName}>{lab.head.name}</p>
+                            <p className={styles.headRole}>{lab.head.role}</p>
+                            <div className={styles.headLinks}>
+                                <a href={`mailto:${lab.head.email}`}>{lab.head.email}</a>
+                                {lab.link && (
+                                    <a href={lab.link.href} target="_blank" rel="noopener noreferrer">{lab.link.label}</a>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            ))}
+        </div>
+    </Section>
+);
